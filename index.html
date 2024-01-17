@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    height: 100vh;
+	background:gray;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+	background:lightblue;
+    overflow: hidden;
+    position: relative;
+}
+
+.city {
+    padding: 15px;
+    background-color: rgb(255, 247, 232);
+    cursor: pointer;
+    border: 1px solid whitesmoke;
+    position: absolute;
+    transition: all 2s ease;
+    border-radius: 10px;
+    opacity: .5;
+    -webkit-box-shadow: 2px 5px 21px -5px rgba(0, 0, 0, 0.82);
+    -moz-box-shadow: 2px 5px 21px -5px rgba(0, 0, 0, 0.82);
+    box-shadow: 2px 5px 21px -5px rgba(0, 0, 0, 0.82);
+	box-shadow:5px 5px 15px 0px #152b4a66, inset 5px 5px 5px rgba(255,255,255,0.35),-6px -6px 10px rgba(255,255,255,1);
+}
+
+.city:hover {
+    transform: scale(1.2);
+	color:blue;
+    opacity: 1;
+    z-index: 11;
+    transition: .5s;
+	text-transform:uppercase;
+}
+	</style>
+</head>
+<body>
+    <main>
+        <div class="container" id="main">
+        </div>
+    </main>
+    <script>
+		let main = document.getElementById('main');
+let cities = [
+    "New York", "London", "Tokyo", "Paris", "Sydney", "Berlin", "Los Angeles", "Mumbai", "Toronto", "Rio de Janeiro",
+    "Beijing", "Dubai", "Moscow", "Rome", "Cairo", "Seoul", "Cape Town", "San Francisco", "Bangkok", "Mexico City",
+    "Amsterdam", "Madrid", "Istanbul", "Stockholm", "Singapore", "Hong Kong", "Vienna", "Athens", "Prague", "Toronto",
+    "Barcelona", "Oslo", "Lisbon", "Edinburgh", "Helsinki", "Brussels", "Copenhagen", "Auckland", "Wellington", "Osaka", "Kyoto"
+];
+cities.forEach((Element) => {
+    let div = document.createElement('div');
+    let xPos = Math.random() * 100;
+    let yPos = Math.random() * 100;
+    div.classList.add('city')
+    div.style.top = `${xPos}%`
+    div.style.left = `${yPos}%`
+    div.innerText = Element;
+    main.appendChild(div)
+    main.addEventListener('mousemove', () => {
+        xPos = Math.random() * 100;
+        yPos = Math.random() * 100;
+        div.style.transform = `translate(${-xPos}%,${-yPos}%)`
+    })
+
+})
+	</script>
+</body>
+</html>
